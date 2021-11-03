@@ -841,6 +841,7 @@ focusmon(const Arg *arg)
 	if ((m = dirtomon(arg->i)) == selmon)
 		return;
 	unfocus(selmon->sel, 0);
+	XWarpPointer(dpy, None, m->barwin, 0, 0, 0, 0, 0, m->mh);
 	selmon = m;
 	focus(NULL);
 }
@@ -1702,8 +1703,6 @@ sigterm(int unused)
 void
 spawn(const Arg *arg)
 {
-	if (arg->v == dmenucmd)
-		dmenumon[0] = '0' + selmon->num;
 	if (fork() == 0) {
 		if (dpy)
 			close(ConnectionNumber(dpy));
