@@ -749,12 +749,11 @@ drawbar(Monitor *m)
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
 
-	/* draw status first so it can be overdrawn by tags later */
-	if (m == selmon) { /* status is only drawn on selected monitor */
-		drw_setscheme(drw, scheme[SchemeNorm]);
-		sw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
-		drw_text(drw, m->ww - sw, 0, sw, bh, 0, stext, 0);
-	}
+	/* draw status first so it can be overdrawn by tags later
+           status is drawn on each monitor */
+        drw_setscheme(drw, scheme[SchemeNorm]);
+        sw = TEXTW(stext) - lrpad + 5; /* 5px right padding */
+        drw_text(drw, m->ww - sw, 0, sw, bh, 0, stext, 0);
 
 	for (c = m->clients; c; c = c->next) {
 		if (ISVISIBLE(c))
