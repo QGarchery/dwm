@@ -57,20 +57,13 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *runcmd[] = { "rofi_run", NULL };
-static const char *windowcmd[] = { "rofi_window", NULL };
-static const char *searchcmd[] = { "broser", NULL };
 static const char *termcmd[]  = { "xfce4-terminal", NULL };
-static const char *browsercmd[]  = { "brave", NULL };
-static const char *filemanagercmd[]  = { "pcmanfm", NULL };
 
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = runcmd } },
-	{ MODKEY,                       XK_s,      spawn,          {.v = searchcmd } },
-	{ MODKEY,                       XK_z,      spawn,          {.v = browsercmd } },
-	{ MODKEY,                       XK_a,      spawn,          {.v = filemanagercmd } },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
@@ -87,7 +80,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_space,  setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ Mod1Mask,                     XK_Tab,    spawn,          {.v = windowcmd} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
