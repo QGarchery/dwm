@@ -1,2 +1,5 @@
 *.o
 dwm
+GPATH
+GRTAGS
+GTAGS
