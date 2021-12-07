@@ -70,6 +70,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstackvis,  {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstackvis,  {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_j,      focusstackhid,  {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_k,      focusstackhid,  {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_s,      show,           {0} },
