@@ -1150,7 +1150,7 @@ incnmaster(const Arg *arg)
 	for(i=0; i<LENGTH(tags); ++i)
 		if(selmon->tagset[selmon->seltags] & 1<<i)
 			selmon->pertag->nmasters[i+1] = selmon->nmaster;
-	
+
 	if(selmon->pertag->curtag == 0)
 	{
 		selmon->pertag->nmasters[0] = selmon->nmaster;
@@ -1861,13 +1861,13 @@ setlayout(const Arg *arg)
 	for(i=0; i<LENGTH(tags); ++i)
 		if(selmon->tagset[selmon->seltags] & 1<<i)
 		{
-			selmon->pertag->ltidxs[i+1][selmon->sellt] = selmon->lt[selmon->sellt]; 
+			selmon->pertag->ltidxs[i+1][selmon->sellt] = selmon->lt[selmon->sellt];
 			selmon->pertag->sellts[i+1] = selmon->sellt;
 		}
-	
+
 	if(selmon->pertag->curtag == 0)
 	{
-		selmon->pertag->ltidxs[0][selmon->sellt] = selmon->lt[selmon->sellt]; 
+		selmon->pertag->ltidxs[0][selmon->sellt] = selmon->lt[selmon->sellt];
 		selmon->pertag->sellts[0] = selmon->sellt;
 	}
 
@@ -2479,7 +2479,7 @@ updatestatus(void)
 {
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
 		strcpy(stext, "dwm-"VERSION);
-	drawbar(selmon);
+	drawbars();
 }
 
 void
