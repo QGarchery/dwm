@@ -179,6 +179,7 @@ static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
+static void focusmonitor(Monitor * m);
 static void focusstackvis(const Arg *arg);
 static void focusstackhid(const Arg *arg);
 static void focusclientvis(const Arg *arg);
@@ -591,7 +592,7 @@ clientmessage(XEvent *e)
 		for (i = 0; i < LENGTH(tags) && !((1 << i) & c->tags); i++);
 		if (i < LENGTH(tags)) {
 			const Arg a = {.ui = 1 << i};
-			selmon = c->mon;
+                        focusmonitor(c->mon);
 			view(&a);
 			focus(c);
 			restack(selmon);
@@ -935,13 +936,21 @@ focusin(XEvent *e)
 void
 focusmon(const Arg *arg)
 {
-	Monitor *m;
+        Monitor * m;
+        m = dirtomon(arg->i);
+        focusmonitor(m);
+}
 
+void
+focusmonitor(Monitor * m)
+{
 	if (!mons->next)
 		return;
-	if ((m = dirtomon(arg->i)) == selmon)
+
+	if (m == selmon)
 		return;
-	unfocus(selmon->sel, 0);
+
+        unfocus(selmon->sel, 0);
 	XWarpPointer(dpy, None, m->barwin, 0, 0, 0, 0, 0, m->mh);
 	selmon = m;
 	focus(NULL);
