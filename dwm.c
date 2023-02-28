@@ -951,7 +951,7 @@ focusmonitor(Monitor * m)
 		return;
 
         unfocus(selmon->sel, 0);
-	XWarpPointer(dpy, None, m->barwin, 0, 0, 0, 0, 0, m->mh);
+	XWarpPointer(dpy, None, m->barwin, 0, 0, 0, 0, m->mw / 2, m->mh / 2);
 	selmon = m;
 	focus(NULL);
 }
